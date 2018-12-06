@@ -18,6 +18,11 @@ namespace vectoresParam
             Console.WriteLine("\n15 encontrado");
             else 
             Console.WriteLine("\n15no encontrado");
+
+            if (buscar2(x, 20) == true)
+                Console.WriteLine("\n20 encontrado");
+            else
+                Console.WriteLine("\n20 no encontrado");
             Console.ReadKey();
         }
         public static void leer(int[] x)
@@ -47,6 +52,18 @@ namespace vectoresParam
                     break;
                    
                 }
+            }
+            return encontrado;
+        }
+        public static bool buscar2(int[]x,int y)
+        {
+            bool encontrado = false;
+            int i = 0;
+            while(i<MAX && encontrado == false)
+            {
+                if (x[i] == y)
+                    encontrado = true;
+                i++;
             }
             return encontrado;
         }
