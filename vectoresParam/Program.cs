@@ -12,18 +12,22 @@ namespace vectoresParam
         static void Main(string[] args)
         {
             int[] x = new int[MAX];
+            string[]nombres=new sring[MAX]
             leer(x);
             imprimir(x);
-            if (buscar(x,15)==true)
-            Console.WriteLine("\n15 encontrado");
-            else 
-            Console.WriteLine("\n15no encontrado");
+            if (buscar(x, 15) == true)
+                Console.WriteLine("\n15 encontrado");
+            else
+                Console.WriteLine("\n15no encontrado");
 
             if (buscar2(x, 20) == true)
                 Console.WriteLine("\n20 encontrado");
             else
                 Console.WriteLine("\n20 no encontrado");
             Console.ReadKey();
+            ordenar(x);
+            Console.WriteLine("\nVector ordenado");
+            imprimir(x);
         }
         public static void leer(int[] x)
         {
@@ -33,33 +37,49 @@ namespace vectoresParam
                 x[i] = Int32.Parse(Console.ReadLine());
             }
         }
+        public static void leernombres(string [] x)
+        {
+            for (int i = 0; i < MAX; i++)
+            {
+                Console.WriteLine("\nIngresa el elemento{0}", i + 1);
+                x[i] = (Console.ReadLine());
+            }
+        }
         public static void imprimir(int[] x)
         {
             foreach (int num in x)
             {
                 Console.WriteLine("\nElemento{0}", num);
             }
-            
+
         }
-        public static bool buscar(int[]x,int y)
+        public static void imprimirnombres(int[] x)
+        {
+            foreach (string num in x)
+            {
+                Console.WriteLine("\nElemento{0}", num);
+            }
+
+        }
+        public static bool buscar(int[] x, int y)
         {
             bool encontrado = false;
-            foreach(int num in x)
+            foreach (int num in x)
             {
                 if (num == y)
                 {
                     encontrado = true;
                     break;
-                   
+
                 }
             }
             return encontrado;
         }
-        public static bool buscar2(int[]x,int y)
+        public static bool buscar2(int[] x, int y)
         {
             bool encontrado = false;
             int i = 0;
-            while(i<MAX && encontrado == false)
+            while (i < MAX && encontrado == false)
             {
                 if (x[i] == y)
                     encontrado = true;
@@ -67,8 +87,19 @@ namespace vectoresParam
             }
             return encontrado;
         }
-
-
-
+        public void ordenar(int[] x)
+        {
+            int aux = 0;
+            for(int i=0;i<x.Length;i++)
+             for(int j=i+1;j<x.Length;j++)
+             
+                    if (x[i] > x[j])
+                    {
+                        aux = x[i];
+                        x[i] = x[j];
+                        x[j] = aux;
+                    }          
+        }
+   
     }
 }
